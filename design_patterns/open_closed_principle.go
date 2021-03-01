@@ -7,18 +7,18 @@ package design_patterns
 type Color int
 
 const (
-	orange Color = iota
-	blue
-	green
-	yellow
-	purple
-	red
+	Orange Color = iota
+	Blue
+	Green
+	Yellow
+	Purple
+	Red
 )
 
 type Product struct {
-	name  string
-	price float64
-	color Color
+	Name  string
+	Price float64
+	Color Color
 }
 
 type Specification interface {
@@ -26,18 +26,22 @@ type Specification interface {
 }
 
 type ColorSpecification struct {
-	color Color
+	Color Color
 }
 
 func (c ColorSpecification) IsSatisfied(p *Product) bool {
-	return c.color == p.color
+	return p.Color == c.Color
 }
 
-type Filter struct {
-	//
+type PriceRangeSpecification struct {
+	Price float64
 }
 
-func (f Filter) Filter(p []Product, s Specification) []*Product {
+func (pr PriceRangeSpecification) IsSatisfied(p *Product) bool {
+	return p.Price <= pr.Price
+}
+
+func Filter(p []Product, s Specification) []*Product {
 	result := make([]*Product, 0)
 	for i, v := range p {
 		if s.IsSatisfied(&v) {
