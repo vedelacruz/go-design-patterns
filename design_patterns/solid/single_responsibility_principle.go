@@ -1,4 +1,4 @@
-package design_patterns
+package solid
 
 import (
 	"fmt"

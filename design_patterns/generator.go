@@ -1,10 +1,10 @@
 package design_patterns
 
-type Person struct {
+type Employee struct {
 	FirstName, MiddleName, LastName string
 }
 
-func (p *Person) NamesGenerator() <-chan string {
+func (p *Employee) NamesGenerator() <-chan string {
 	out := make(chan string)
 	go func() {
 		defer close(out)

@@ -1,4 +1,4 @@
-package design_patterns
+package solid
 
 /*
 	makes the interface open for extensibility but closed for modification
